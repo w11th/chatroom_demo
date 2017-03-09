@@ -1,0 +1,29 @@
+<div>
+  <h1>Chatter</h1>
+  <ul id="chatter_list" style="border:1px solid black">
+  </ul>
+</div>
+<div>
+  <h1>Chat Board</h1>
+  <ul id="chat_board" style="border:1px solid black">
+  </ul>
+</div>
+<div>
+  <form id="chat_form" action="">
+    <input name="message" id="chat_message" type="text" value="" />
+    <input name="" type="submit" value="submit" />
+  </form>
+</div>
+<script src="/socket.io/socket.io.js">
+</script>
+<script src="/assets/chat.js"></script>
+
+<script>
+var form = document.getElementById("chat_form");
+Chatter.init();
+form.onsubmit = function(event) {
+  event.preventDefault();
+  var message = document.getElementById("chat_message").value;
+  Chatter.sendMessage(message);
+};
+</script>
